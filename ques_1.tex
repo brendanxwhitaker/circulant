@@ -1,0 +1,225 @@
+\documentclass[12pt,reqno]{amsart}
+
+\usepackage{}
+\usepackage{amssymb}					% math symbols
+\usepackage{amsmath}					% basic math
+\usepackage{amsthm}						% theorem/lemma envs
+%\usepackage{mathabx}					% better-looking integrals
+
+%\usepackage{fontspec}
+%\newfontfamily\DejaSans{DejaVu Sans}
+
+%\newfontfamily{\bask}{GFS Baskerville}
+%\let\sum\relax
+%\DeclareMathOperator*{\sum}{\raisebox{-3.5pt}{\scalebox{2}{{\bask Σ}}}} % all these lines to define this extreme summation sign
+
+% Antiquated font support
+%\usepackage{fontspec}
+%\usepackage[OT1]{fontenc}
+%\usepackage{boisik}
+
+%mathdollar issue
+% This is a poorly-styled package for math symbols
+%\usepackage{MnSymbol}
+
+
+%\usepackage[margin=0.6in]{geometry}		% margin size
+%\usepackage{geometry}
+
+\usepackage{verbatim}					% code
+%\usepackage{amsrefs}					% references
+%\usepackage{enumitem}					% modified numbering
+\usepackage{tikz-cd}					% commutative diagrams
+\usepackage{braket}						% physics bra-ket notation
+\usetikzlibrary{cd}						% commutative diagrams
+\usepackage{adjustbox}					% nice box env
+\usepackage[all,cmtip]{xy}
+\usepackage{pgfplots}					% math plots
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}			% encoding support
+\usepackage{graphicx}
+\usepackage[backend=bibtex]{biblatex}
+\bibliography{bibliography.bib}
+
+
+
+
+
+
+%\usepackage[makeroom]{cancel}
+%\usepackage{imakeidx}					% index
+\usepackage{float}						% placing of figures
+\usepackage{booktabs}
+
+%\pgfplotsset{width=10cm,compat=1.9}		% plot hyperparameters
+%\makeindex								% generate index
+
+%\usepackage{hyperref}					% hyperlinks in document
+%\hypersetup{							% colored links
+%     colorlinks   = true,
+%     citecolor    = red
+%}
+
+%\newtheorem{theorem}{Theorem}
+
+% NEW COMMANDS
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+\newcommand{\norm}{\trianglelefteq}		% normal subgroup
+\newcommand{\propnorm}{\triangleleft}	% proper normal subgroup
+\newcommand{\semi}{\rtimes}				% semidirect product
+\newcommand{\sub}{\subseteq}			% subset
+\newcommand{\nsub}{\nsubseteq}			% not subset
+\newcommand{\fa}{\forall}				% for all/any quantifier
+\newcommand{\R}{\mathbb{R}}				% reals
+\newcommand{\z}{\mathbb{Z}}				% integers
+\newcommand{\n}{\mathbb{N}}				% naturals
+\newcommand{\Q}{\mathbb{Q}}				% rationals
+\renewcommand{\c}{\mathbb{C}}			% complex numbers
+\newcommand{\F}{\mathbb{F}}				% finite field
+\newcommand{\bb}{\vspace{3mm}}			% skip line
+\newcommand{\heart}{\ensuremath\heartsuit}
+\newcommand{\mc}{\mathcal}				% calligraphic script
+\newcommand{\bee}{\begin{equation}\begin{aligned}}
+\newcommand{\eee}{\end{aligned}\end{equation}}
+%\newcommand{\nequiv}{\not\equiv}		% not congruent
+% linear combinations
+\newcommand{\lc}[2]{#1_1 + \cdots + #1_{#2}}
+\newcommand{\lcc}[3]{#1_1 #2_1 + \cdots + #1_{#3} #2_{#3}}
+\newcommand{\ten}{\otimes} 				% tensor product
+\newcommand{\fracc}{\frac}				% fraction autocomplete
+\newcommand{\tens}{\otimes}				% tensor product 
+\newcommand{\lpar}{\left(}				% scalable parentheses
+\newcommand{\rpar}{\right)}				
+\newcommand{\floor}{\lfloor}			% floor
+\newcommand{\Tau}{\mc{T}}				% capital Tau
+\newcommand{\rank}{\text{rank}}			% rank
+\DeclareMathOperator{\coker}{coker}		% cokernel
+\newcommand*\pp{{\rlap{\('\)}}}
+\newcommand{\counter}{\setcounter}		% counter autocomplete
+\newcommand{\gal}{\text{Gal}}			% Galois group
+\newcommand{\aut}{\text{Aut}}			% automorphism group
+\newcommand{\fix}{\text{Fix}}			% fixed field
+\newcommand{\qwe}{\sqrt}				% square root
+\newcommand{\wer}{\sqrt}				% n-th root
+\newcommand{\tilda}{\tilde}				% tilda
+\newcommand{\ds}{\displaystyle}			% displaystyle shortcut
+\newcommand{\absl}{\left|}				% scalable abs val bars
+\newcommand{\absr}{\right|}
+\newcommand{\lbrac}{\left[}				% scalable brackets
+\newcommand{\rbrac}{\right]}
+\newcommand{\dx}{\text{d}x}				% common differentials
+\newcommand{\dt}{\text{d}t}			
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+% Arrow vector notation. 
+%\newcommand{\vecc}{\vec}
+% Bold vector notation. 
+\newcommand{\vecc}{\mathbf}
+\newcommand{\barr}{\bar}
+\newcommand{\D}{\partial}
+\newcommand{\comp}[1]{{#1}^\complement}	% set complement
+\newcommand{\textif}{\text{ if }}
+
+% RENEW COMMANDS
+\renewcommand{\leq}{\leqslant}			% prettier less equal
+\renewcommand{\geq}{\geqslant}			% prettier greater equal
+\renewcommand{\tt}{\text}				% text
+\renewcommand{\rm}{\normalshape}		% text inside math
+\renewcommand{\Re}{\operatorname{Re}}	% real part
+\renewcommand{\Im}{\operatorname{Im}}	% imaginary part
+\AtBeginDocument{\renewcommand{\bar}{\overline}}	% wider bar
+\renewcommand{\d}{\mathrm{d}}			% differential operator
+\renewcommand{\'}{\hspace{0.5mm}'}		% fix spacing for derivatives
+\renewcommand{\Set}[1]{\left\{\,#1\,\right\}}	% fix spacing for built-in \Set macro
+
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\inter}{\hspace{1mm}\small\mathrm{o}}
+\newcommand{\interior}[1]{%
+  {\kern0pt#1}^{\hspace{0.5mm}\small\mathrm{o}}%
+}
+\newcommand{\Nu}{\mathcal{V}}
+\newcommand{\hrul}{\vspace{3mm}\hrule\vspace{3mm}}
+\renewcommand{\d}{\mathrm{d}}
+
+\let\temp\phi							% prettier phi
+\let\phi\varphi
+\let\phy\temp
+
+\let\temp\epsilon						% prettier epsilon
+\let\epsilon\varepsilon
+\let\varepsilon\temp
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\begin{document}
+
+Let $\omega = e^{2k\pi i/p}$ be a primitive
+$p$-th root of unity. Define
+\bee
+	\Theta_{p,q_1,q_2}(x,y) = \prod_{j = 0}^{p - 1} 
+	(1 - x \hspace{0.25mm} \omega^{q_1j} 
+	- y \hspace{0.25mm} \omega^{q_2j}). 
+\eee
+Let $\gamma: (x,y) \mapsto (x\omega^{q_1},y\omega^{q_2})$. 
+We claim that 
+\bee
+	(\Theta_{p,q_1,q_2} \circ \gamma)(x,y) 
+	&=
+		\Theta_{p,q_1,q_2}(x,y). 
+\eee
+How do I prove the above? And how do I show that
+if, for example, $(p,q_1) = 1$, then 
+considering $\Theta_{p,q_1,q_2}$ is equivalent to considering
+$\Theta_{p,1,q_2'}$? I know we must consider the image of
+$\Theta$ under the map $\gamma$, but it is unclear to me that
+\bee\label{third}
+	\prod_{j = 0}^{p - 1} 
+	(1 - x \hspace{0.25mm} \omega^{q_1j} 
+	- y \hspace{0.25mm} \omega^{q_2j})
+	= 
+	\prod_{j = 0}^{p - 1} 
+	(1 - x \hspace{0.25mm} \omega^{q_1 + q_1j} 
+	- y \hspace{0.25mm} \omega^{q_2 + q_2j}). 
+\eee
+Is the right-hand side of (\ref{third}) not the image of $\Theta$
+under the given map/group action?
+
+\hrul 
+
+Let's write it out explicitly. 
+
+Let $j = 0$. Then we want to find 
+\bee
+	1 - x\omega^{q_1} - y\omega^{q_2}
+\eee
+in 
+\bee
+	\prod_{k = 0}^{p - 1}
+	(1 - x \omega^{q_1k} 
+	- y \omega^{q_2k}). 
+\eee
+Clearly $k = 1$ yields the factor we want.
+Now let $j$ be arbitrary. Then we want to find 
+\bee
+	1 - x\omega^{q_1 + q_1j} - y\omega^{q_2 + q_2j}
+	&=
+		1 - x\omega^{q_1(j + 1)} - y\omega^{q_2(j + 1)}
+\eee
+in
+\bee
+	\prod_{k = 0}^{p - 1}
+	(1 - x \omega^{q_1k} 
+	- y \omega^{q_2k}). 
+\eee
+Since the group of roots of unity is cyclic, we can find
+the desired factor. It is $k = j + 1 \mod p$. 
+
+
+
+
+
+
+
+
+\end{document}
